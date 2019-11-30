@@ -9,18 +9,21 @@ right_shift(
 )
 {
     unsigned tmp = data [size - 1];
+#if 1
+
     cout << "size: " << size << endl;
     for (unsigned i = 0; i < size; i ++) {
         cout << data[i] << " ";
     }
     cout << endl;
-
+#endif
     for (signed j = (size - 2); j >= 0; j--) {
         data[j + 1] = data [j];
     }
     data [0] = tmp;
 #if 0
     cout << "after: " << endl;
+
     for (unsigned i = 0; i < size; i ++) {
         cout << data[i] << " ";
     }
@@ -41,9 +44,10 @@ arrange (
     }
     cout << endl;
    for (unsigned i = 0; i < rs; i ++) {
-       for (unsigned j = 0; j <= ls; j ++) {
+       for (unsigned j = 0; j < ls + i; j ++) {
            if (ldata[j] > rdata[i]) {
-                right_shift (ldata + j, ls + i + 1);
+                right_shift (ldata + j, ls + i - j + 1
+                );
                break;
            }
        }
